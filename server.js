@@ -6,6 +6,7 @@ const archivoDB = require('./conexion');
 
 //Import routes and model
 const rutasplatos = require('./rutas/plato');
+const rutasingredientes = require('./rutas/ingrediente');
 
 //Import body parser
 const bodyParser = require('body-parser');
@@ -13,6 +14,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:'true'}))
 
 app.use('/api/platos', rutasplatos);
+app.use('/api/ingredientes', rutasingredientes);
 
 app.get('/', (req, res) => {
     res.end('Welcome to nodebackend');

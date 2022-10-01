@@ -2,6 +2,7 @@ import './App.css';
 import ListaPlatos from './components/ListaPlatos';
 import EditarPlato from './components/EditarPlato';
 import AgregarPlato from './components/AgregarPlato';
+import AddIngrediente from './components/Ingredientes';
 
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
@@ -19,6 +20,9 @@ function App() {
                 <li className="nav-item">
                   <a className="nav-link active" aria-current="page" href="/agregarplato">Agregar Plato</a>
                 </li>
+                <li className="nav-item">
+                  <a className="nav-link active" aria-current="page" href="/ingredientes">Ingredientes</a>
+                </li>
               </ul>
             </div>
           </div>
@@ -29,6 +33,7 @@ function App() {
         <Route path='/' element={<ListaPlatos/>}></Route>
         <Route path='/agregarplato' element={<AgregarPlato/>}></Route>
         <Route path='/editarplato' element={<EditarPlato/>}></Route>
+        <Route path='/ingredientes' element={<AddIngrediente/>}></Route>
       </Routes>
     </BrowserRouter>
 
