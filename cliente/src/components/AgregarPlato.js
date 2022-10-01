@@ -5,9 +5,9 @@ import axios from 'axios';
 function AgregarPlato(){
 
     //Hooks
-    const[nombre, setNombre] = useState('');
-    const[ingrediente, setIngrediente] = useState('');
-    const[precio, setPrecio] = useState('');
+    const[nombre, setNombre]=useState('');
+    const[ingrediente, setIngrediente]=useState('');
+    const[precio, setPrecio]=useState('');
 
     function agregarPlato(){
         var plato = {
@@ -18,11 +18,11 @@ function AgregarPlato(){
         }
         console.log(plato);
 
-        axios.post('/api/plato/agregarplato')
-        .then(res => {
+        axios.post('/api/platos/agregarplato', plato)
+        .then(res=>{
             alert(res.data)
         })
-        .then(err => {console.log(err)})
+        .then(err=>{console.log(err)})
     }
 
     return(
@@ -37,12 +37,12 @@ function AgregarPlato(){
                     <input type="text" className='form-control' value={nombre} onChange={(e) => {setNombre(e.target.value)}}></input>
                 </div>
                 <div className="col-sm-6 offset-3">
-                    <label htmlFor="ingrediente" className="form"value={ingrediente} onChange={(e) => {setIngrediente(e.target.value)}}>Ingrediente</label>
-                    <input type="text" className='form-control'></input>
+                    <label htmlFor="ingrediente" className="form">Ingrediente</label>
+                    <input type="text" className='form-control' value={ingrediente} onChange={(e) => {setIngrediente(e.target.value)}}></input>
                 </div>
                 <div className="col-sm-6 offset-3">
-                    <label htmlFor="precio" className="form"value={precio} onChange={(e) => {setPrecio(e.target.value)}}>Precio</label>
-                    <input type="text" className='form-control'></input>
+                    <label htmlFor="precio" className="form">Precio</label>
+                    <input type="text" className='form-control' value={precio} onChange={(e) => {setPrecio(e.target.value)}}></input>
                 </div>
 
                 <button onClick={agregarPlato} className='btn btn-success'>Guardar plato</button>

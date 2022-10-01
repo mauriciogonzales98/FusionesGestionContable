@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/fusiones');
+
+const DB = 'mongodb://localhost:27017/fusiones';
+
+mongoose.connect(DB, {useNewUrlParser: true, useUnifiedTopology: true});
 
 const objetobd = mongoose.connection;
 
