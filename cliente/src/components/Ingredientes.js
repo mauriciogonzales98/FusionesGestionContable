@@ -1,6 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import uniqid from 'uniqid';
 import axios from 'axios';
+import ListaPlatos from './ListaPlatos';
+import ListaIngredientes from './ListaIngredientes';
 
 function AddIngrediente(){
 
@@ -23,10 +25,18 @@ function AddIngrediente(){
             alert(res.data)
         })
         .then(err=>{console.log(err)})
+
+        refreshPage();
+    }
+    
+    function refreshPage(){
+        window.location.reload(false);
     }
 
     return(
         <div className="container">
+
+            <ListaIngredientes/>
             <div className="row">
                 <h2 className='mt-4'>Agregar Ingrediente</h2>
             </div>
