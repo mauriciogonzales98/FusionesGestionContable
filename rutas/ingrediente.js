@@ -8,7 +8,7 @@ const eschemaingrediente = new eschema({
     nombre: String,
     peso: String,
     precio: String,
-    idplato: String
+    id: String
 })
 
 const ModeloIngrediente = mongoose.model('ingredientes', eschemaingrediente);
@@ -20,7 +20,7 @@ router.post('/addingrediente', (req, res)=>{
         nombre: req.body.nombre,
         peso: req.body.peso,
         precio: req.body.precio,
-        idplato: req.body.idplato
+        id: req.body.id
     })
     nuevoingrediente.save(function(err){
         if(!err){

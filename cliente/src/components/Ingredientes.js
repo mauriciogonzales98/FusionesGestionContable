@@ -16,7 +16,7 @@ function AddIngrediente(){
             nombre: nombre,
             peso: peso,
             precio: precio,
-            idingrediente: uniqid()
+            id: uniqid()
         }
         console.log(ingrediente);
 
