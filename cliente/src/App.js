@@ -3,7 +3,6 @@ import ListaPlatos from './components/ListaPlatos';
 import EditarPlato from './components/EditarPlato';
 import AgregarPlato from './components/AgregarPlato';
 import AddIngrediente from './components/Ingredientes';
-import ListaIngredientes from './components/ListaIngredientes';
 
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 

@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import uniqid from 'uniqid';
 import axios from 'axios';
-import ListaPlatos from './ListaPlatos';
 import ListaIngredientes from './ListaIngredientes';
 
 function AddIngrediente(){
