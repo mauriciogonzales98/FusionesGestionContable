@@ -15,7 +15,7 @@ function AgregarPlato(){
         
         var plato = {
             nombre: nombre,
-            ingredientes: [{ing: ingrediente, peso: peso},],
+            ingredientes: ingredientes,
             precio: precio,
             idplato: uniqid()
         }
@@ -26,6 +26,22 @@ function AgregarPlato(){
             alert(res.data)
         })
         .then(err=>{console.log(err)})
+
+        setNombre('');
+        setIngrediente('');
+        setPeso('');
+        setPrecio('');
+    }
+
+    function agregarIngrediente(){
+        ingredientes.push({ing: ingrediente, peso: peso});
+        console.log(ingredientes);
+        clearInput();
+    }
+
+    function clearInput(){
+        setIngrediente('');
+        setPeso('');
     }
 
     return(
@@ -39,6 +55,19 @@ function AgregarPlato(){
                     <label htmlFor="nombre" className="form">Nombre</label>
                     <input type="text" className='form-control' value={nombre} onChange={(e) => {setNombre(e.target.value)}}></input>
                 </div>
+
+                <h4>Lista De Ingredientes</h4>
+                    <table className='table table-dark mt-4'>
+                        <thead>
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Peso</th>
+                            </tr>
+                        </thead>
+                        <tbody> 
+                        </tbody>
+                    </table>
+
                 <div className="col-sm-6 offset-3">
                     <label htmlFor="ingrediente" className="form">Ingrediente</label>
                     <input type="text" className='form-control' value={ingrediente} onChange={(e) => {setIngrediente(e.target.value)}}></input>
@@ -47,6 +76,8 @@ function AgregarPlato(){
                     <label htmlFor="ingrediente" className="form">Peso</label>
                     <input type="text" className='form-control' value={peso} onChange={(e) => {setPeso(e.target.value)}}></input>
                 </div>
+                <button onClick={agregarIngrediente} className='btn btn-success col'>Agregar</button>
+
                 <div className="col-sm-6 offset-3">
                     <label htmlFor="precio" className="form">Precio</label>
                     <input type="text" className='form-control' value={precio} onChange={(e) => {setPrecio(e.target.value)}}></input>
