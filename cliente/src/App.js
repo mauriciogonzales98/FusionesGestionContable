@@ -23,6 +23,9 @@ function App() {
                 <li className="nav-item">
                   <a className="nav-link active" aria-current="page" href="/ingredientes">Ingredientes</a>
                 </li>
+                <li className="nav-item">
+                  <a className="nav-link active" aria-current="page" href="/platos">Platos</a>
+                </li>
               </ul>
             </div>
           </div>

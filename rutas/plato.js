@@ -11,11 +11,18 @@ const eschema = mongoose.Schema;
     idplato: String
 })*/
 
+const ingredienteSchema = new eschema({
+    
+        ing: String, 
+        peso: Number,
+
+})
+
 const eschemaplato = new eschema({
-    nombre: {type: String},
-    ingrediente: {type: String},
-    precio: {type: String},
-    idplato: {type: String}
+    nombre: String,
+    ingredientes: [ingredienteSchema],
+    precio: String,
+    idplato: String,
 })
 
 const ModeloPlato = mongoose.model('platos', eschemaplato);
@@ -30,7 +37,7 @@ router.get('/test', (req, res) => {
 router.post('/agregarplato', (req, res)=>{
     const nuevoplato = new ModeloPlato({
         nombre: req.body.nombre,
-        ingrediente: req.body.ingrediente,
+        ingredientes: req.body.ingredientes,
         precio: req.body.precio,
         idplato: req.body.idplato
     })

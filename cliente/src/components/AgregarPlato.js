@@ -6,13 +6,16 @@ function AgregarPlato(){
 
     //Hooks
     const[nombre, setNombre]=useState('');
+    const[ingredientes, setIngredientes]=useState([]);
     const[ingrediente, setIngrediente]=useState('');
+    const[peso, setPeso]=useState('');
     const[precio, setPrecio]=useState('');
 
     function agregarPlato(){
+        
         var plato = {
             nombre: nombre,
-            ingrediente: ingrediente,
+            ingredientes: [{ing: ingrediente, peso: peso},],
             precio: precio,
             idplato: uniqid()
         }
@@ -39,6 +42,10 @@ function AgregarPlato(){
                 <div className="col-sm-6 offset-3">
                     <label htmlFor="ingrediente" className="form">Ingrediente</label>
                     <input type="text" className='form-control' value={ingrediente} onChange={(e) => {setIngrediente(e.target.value)}}></input>
+                </div>
+                <div className="col-sm-6 offset-3">
+                    <label htmlFor="ingrediente" className="form">Peso</label>
+                    <input type="text" className='form-control' value={peso} onChange={(e) => {setPeso(e.target.value)}}></input>
                 </div>
                 <div className="col-sm-6 offset-3">
                     <label htmlFor="precio" className="form">Precio</label>
