@@ -9,14 +9,12 @@ function AgregarPlato(){
     const[ingredientes, setIngredientes]=useState([]);
     const[ingrediente, setIngrediente]=useState('');
     const[peso, setPeso]=useState('');
-    const[precio, setPrecio]=useState('');
 
     function agregarPlato(){
         
         var plato = {
             nombre: nombre,
             ingredientes: ingredientes,
-            precio: precio,
             idplato: uniqid()
         }
         console.log(plato);
@@ -30,7 +28,7 @@ function AgregarPlato(){
         setNombre('');
         setIngrediente('');
         setPeso('');
-        setPrecio('');
+        setIngredientes([]);
     }
 
     function agregarIngrediente(){
@@ -43,6 +41,15 @@ function AgregarPlato(){
         setIngrediente('');
         setPeso('');
     }
+
+    const tableRows = ingredientes.map((rows) =>{
+        return (
+            <tr>
+                <td>{rows.ing}</td>
+                <td>{rows.peso}</td>
+            </tr>
+        )
+    })
 
     return(
         <div className="container">
@@ -64,7 +71,8 @@ function AgregarPlato(){
                                 <th scope="col">Peso</th>
                             </tr>
                         </thead>
-                        <tbody> 
+                        <tbody>
+                            {tableRows}
                         </tbody>
                     </table>
 
@@ -77,11 +85,6 @@ function AgregarPlato(){
                     <input type="text" className='form-control' value={peso} onChange={(e) => {setPeso(e.target.value)}}></input>
                 </div>
                 <button onClick={agregarIngrediente} className='btn btn-success col'>Agregar</button>
-
-                <div className="col-sm-6 offset-3">
-                    <label htmlFor="precio" className="form">Precio</label>
-                    <input type="text" className='form-control' value={precio} onChange={(e) => {setPrecio(e.target.value)}}></input>
-                </div>
 
                 <button onClick={agregarPlato} className='btn btn-success'>Guardar plato</button>
             </div>
