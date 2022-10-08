@@ -15,6 +15,7 @@ function AddIngrediente(){
             nombre: nombre,
             peso: peso,
             precio: precio,
+            pu: precio/peso,
             id: uniqid()
         }
         console.log(ingrediente);
@@ -30,6 +31,10 @@ function AddIngrediente(){
     
     function refreshPage(){
         window.location.reload(false);
+    }
+
+    function updateIngrediente(){
+
     }
 
     return(
@@ -53,8 +58,12 @@ function AddIngrediente(){
                     <label htmlFor="precio" className="form">Precio</label>
                     <input type="text" className='form-control' value={precio} onChange={(e) => {setPrecio(e.target.value)}}></input>
                 </div>
-
-                <button onClick={addIngrediente} className='btn btn-success'>Guardar ingrediente</button>
+                
+                <div className='row justify-content-md-center'>
+                    <button onClick={addIngrediente} className='btn btn-success col-sm-1'>Agregar</button>
+                    &nbsp;
+                    <button onClick={updateIngrediente} type="button" className='btn btn-warning col-sm-1'>Actualizar</button>
+                </div>
             </div>
         </div>
     )

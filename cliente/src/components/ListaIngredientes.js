@@ -21,13 +21,7 @@ function ListaIngredientes(){
                 <td>{info.nombre}</td>
                 <td>{info.peso}</td>
                 <td>{info.precio}</td>
-                <td><select>
-                        <option value=""></option>
-                        <option value="verduleria">Verduleria</option>
-                        <option value="carniceria">Carniceria</option>
-                        <option value="otro">Otro</option>
-                    </select>
-                </td>
+                <td>{info.pu}</td>
             </tr>
         )
     })
@@ -41,7 +35,7 @@ function ListaIngredientes(){
                         <th scope="col">Nombre</th>
                         <th scope="col">Peso</th>
                         <th scope="col">Precio</th>
-                        <th scope="col">Extra test</th>
+                        <th scope="col">Precio unitario</th>
                         </tr>
                     </thead>
                     <tbody> 

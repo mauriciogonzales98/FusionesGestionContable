@@ -8,6 +8,7 @@ const eschemaingrediente = new eschema({
     nombre: String,
     peso: String,
     precio: String,
+    pu: Number,
     id: String
 })
 
@@ -20,6 +21,7 @@ router.post('/addingrediente', (req, res)=>{
         nombre: req.body.nombre,
         peso: req.body.peso,
         precio: req.body.precio,
+        pu: req.body.pu,
         id: req.body.id
     })
     nuevoingrediente.save(function(err){
