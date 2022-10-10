@@ -43,7 +43,6 @@ function CostoFijo(){
                 console.log(key, res.data[key]);
             })
             console.log(total);
-            // alert(res.data[0].nombre)
         })
         .then(err=>{console.log(err)})
     }
@@ -54,7 +53,7 @@ function CostoFijo(){
             <div className="row">
                 <h2 className='mt-4'>Costo Fijo</h2>
             </div>
-
+            Costo total {total}
             <div className="row">
                 <div className="col-sm-6 offset-3">
                     <label htmlFor="nombre" className="form">Nombre</label>
