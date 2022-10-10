@@ -45,22 +45,10 @@ function CostoFijo(){
             Object.keys(res.data).forEach(key =>{
                 total += Number(res.data[key].precio);
             })
-            // console.log(total);
         })
         .then(err=>{console.log(err)})
 
         console.log(total)
-        // var newcostofijo = {
-        //     nombre: "Costo Fijo",
-        //     precio: total,
-        // }
-
-        // axios.post('/api/constantes/saveconst', newcostofijo)
-        // .then(res=>{
-        //     alert(res.data)
-        // })
-        // .then(err=>{console.log(err)})
-        
         updateCostofijo();
     }
 
