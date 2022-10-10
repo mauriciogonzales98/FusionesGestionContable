@@ -21,7 +21,7 @@ const ingredienteSchema = new eschema({
 const eschemaplato = new eschema({
     nombre: String,
     ingredientes: [ingredienteSchema],
-    precio: String,
+    precio: Number,
     idplato: String,
 })
 

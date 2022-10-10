@@ -6,7 +6,7 @@ const eschema = mongoose.Schema;
 
 const eschemacostofijo = new eschema({
     nombre: String,
-    precio: String,
+    precio: Number,
     categoria: String,
     id: String
 })

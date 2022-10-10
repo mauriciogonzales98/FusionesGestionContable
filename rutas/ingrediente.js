@@ -6,8 +6,8 @@ const eschema = mongoose.Schema;
 
 const eschemaingrediente = new eschema({
     nombre: String,
-    peso: String,
-    precio: String,
+    peso: Number,
+    precio: Number,
     pu: Number,
     id: String
 })

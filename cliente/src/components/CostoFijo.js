@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import uniqid from 'uniqid';
 
+let total=0;
+
 function CostoFijo(){
 
     //Hooks
@@ -25,13 +27,26 @@ function CostoFijo(){
         })
         .then(err=>{console.log(err)})
 
-        // refreshPage();
+        refreshPage();
     }
     
     function refreshPage(){
         window.location.reload(false);
     }
     
+    function calcular(){
+
+        axios.get('/api/costofijo/getcostofijo')
+        .then(res=>{
+            Object.keys(res.data).forEach(key =>{
+                total += Number(res.data[key].precio);
+                console.log(key, res.data[key]);
+            })
+            console.log(total);
+            // alert(res.data[0].nombre)
+        })
+        .then(err=>{console.log(err)})
+    }
 
     return(
         <div className="container">
@@ -65,7 +80,7 @@ function CostoFijo(){
                 <div className='row justify-content-md-center'>
                     <button onClick={addCostoFijo} className='btn btn-success col-sm-1'>Agregar</button>
                     &nbsp;
-                    <button type="button" className='btn btn-warning col-sm-1'>Actualizar</button>
+                    <button type="button" className='btn btn-warning col-sm-1' onClick={calcular}>Calcular</button>
                 </div>
             </div>
         </div>
