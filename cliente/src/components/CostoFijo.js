@@ -27,24 +27,55 @@ function CostoFijo(){
         })
         .then(err=>{console.log(err)})
 
-        refreshPage();
+        calcular();   
+        
+        // refreshPage();
     }
     
-    function refreshPage(){
-        window.location.reload(false);
-    }
+    // function refreshPage(){
+    //     window.location.reload(false);
+    // }
     
-    function calcular(){
+    async function calcular(){
 
-        axios.get('/api/costofijo/getcostofijo')
+        await axios.get('/api/costofijo/getcostofijo')
         .then(res=>{
+            
+            total = 0;
             Object.keys(res.data).forEach(key =>{
                 total += Number(res.data[key].precio);
-                console.log(key, res.data[key]);
             })
-            console.log(total);
+            // console.log(total);
         })
         .then(err=>{console.log(err)})
+
+        console.log(total)
+        // var newcostofijo = {
+        //     nombre: "Costo Fijo",
+        //     precio: total,
+        // }
+
+        // axios.post('/api/constantes/saveconst', newcostofijo)
+        // .then(res=>{
+        //     alert(res.data)
+        // })
+        // .then(err=>{console.log(err)})
+        
+        updateCostofijo();
+    }
+
+    function updateCostofijo(){
+        console.log(total);
+        var newcostofijo = {
+            nombre: "Costo Fijo",
+            precio: total,
+        }
+
+        axios.post('/api/constantes/saveconst', newcostofijo)
+        .then(res=>{
+            alert(res.data)
+        })
+        .then(err=>{console.log(err.response.data)})
     }
 
     return(
@@ -53,7 +84,7 @@ function CostoFijo(){
             <div className="row">
                 <h2 className='mt-4'>Costo Fijo</h2>
             </div>
-            Costo total {total}
+            Costo total: {total} 
             <div className="row">
                 <div className="col-sm-6 offset-3">
                     <label htmlFor="nombre" className="form">Nombre</label>
