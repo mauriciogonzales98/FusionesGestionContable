@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 import uniqid from 'uniqid';
 
@@ -63,7 +63,7 @@ function CostoFijo(){
         .then(res=>{
             alert(res.data)
         })
-        .then(err=>{console.log(err.response.data)})
+        .catch(err=>{console.log(err.response.data)})
     }
 
     return(

@@ -18,7 +18,10 @@ router.post('/saveconst', (req, res)=>{
         nombre: req.body.nombre,
         precio: req.body.precio
     })
-    .then(err => {console.log(err.response.data)})
+    .catch(err => {
+        console.log(err.message)
+    })
+    // .then(err => {console.log(err.response.data)})
     
 })
 
