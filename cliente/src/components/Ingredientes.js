@@ -39,7 +39,6 @@ function AddIngrediente(){
         .then(res=>{
             
             alert(res.data[0].nombre)
-            // alert(res.data[0].nombre)
         })
         .then(err=>{console.log(err)})
 

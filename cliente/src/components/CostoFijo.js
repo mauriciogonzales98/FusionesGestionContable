@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import uniqid from 'uniqid';
+import ShowCostoFijo from './ShowCostoFijo';
 
 let total=0;
 
@@ -10,6 +11,11 @@ function CostoFijo(){
     const[nombre, setNombre]=useState('');
     const[precio, setPrecio]=useState('');
     const[categoria, setCategoria]=useState('');
+    const[cantidad, setCantidad]=useState('');
+
+    const[cf, setCF]=useState('');
+    const[viandas, setViandas]=useState('');
+    const[costounitario, setCostoUnitario]=useState('');
 
     function addCostoFijo(){
 
@@ -50,6 +56,7 @@ function CostoFijo(){
 
         console.log(total)
         updateCostofijo();
+        updateCostoUnitario();
     }
 
     function updateCostofijo(){
@@ -59,11 +66,61 @@ function CostoFijo(){
             precio: total,
         }
 
-        axios.post('/api/constantes/saveconst', newcostofijo)
+        axios.post('/api/constantes/savecostofijo', newcostofijo)
         .then(res=>{
             alert(res.data)
         })
-        .catch(err=>{console.log(err.response.data)})
+        .catch(err=>{console.log(err)})
+    }
+
+    function updateViandas(){
+        var newviandas = {
+            nombre: "Viandas",
+            cantidad: cantidad
+        }
+        axios.post('/api/constantes/saveviandas', newviandas)
+        .then(res=>{
+            alert("Viandas actualizadas exitosamente");
+            alert(res.data)
+        })
+        .catch(err=>{console.log(err)})
+
+        updateCostoUnitario();
+        refreshPage();
+    }
+
+    function refreshPage(){
+        window.location.reload(false);
+    }
+
+    async function updateCostoUnitario(){
+        await axios.get('/api/constantes/getcostofijo')
+        .then(res=>{     
+            setCF(res.data[0].precio);
+        })
+        .catch(err=>{console.log(err)})
+
+        await axios.get('/api/constantes/getviandas')
+        .then(res=>{   
+            setViandas(res.data[0].cantidad);
+        })
+        .catch(err=>{console.log(err)})
+        
+        var temp = cf/viandas;
+        setCostoUnitario(temp);
+
+        var newcostounitario = {
+            nombre: "Costo Unitario",
+            precio: costounitario
+        }
+        axios.post('/api/constantes/savecostounitario', newcostounitario)
+        .then(res=>{
+            console.log("Costo actualizado exitosamente");
+            alert(res.data)
+        })
+        .catch(err=>{console.log(err)})
+
+
     }
 
     return(
@@ -72,7 +129,15 @@ function CostoFijo(){
             <div className="row">
                 <h2 className='mt-4'>Costo Fijo</h2>
             </div>
-            Costo total: {total} 
+            <ShowCostoFijo/>
+
+            <div className='row'>
+                <div className="col-sm-3 offset-3">
+                    <label htmlFor="viandas" className="form">Viandas</label>
+                    <input value={cantidad} type="text" className='form-control' onChange={(e)=> {setCantidad(e.target.value)}}></input>
+                </div>
+                <button onClick={updateViandas} className='btn btn-success col-sm-1'>Actualizar</button>
+            </div>
             <div className="row">
                 <div className="col-sm-6 offset-3">
                     <label htmlFor="nombre" className="form">Nombre</label>
