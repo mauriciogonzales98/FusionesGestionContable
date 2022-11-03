@@ -78,3 +78,14 @@ router.get('/getcostounitario', (req, res)=>{
         }
     })
 })
+
+router.get('/getallconst', (req, res)=>{
+    ModeloConst.find({}, function(docs, err){
+        if(!err){
+            res.send(docs)
+        }
+        else{
+            res.send(err);
+        }
+    })
+})

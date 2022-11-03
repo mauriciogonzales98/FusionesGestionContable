@@ -108,12 +108,13 @@ function CostoFijo(){
         
         var temp = cf/viandas;
         setCostoUnitario(temp);
+        console.log(costounitario);
 
         var newcostounitario = {
             nombre: "Costo Unitario",
             precio: costounitario
         }
-        axios.post('/api/constantes/savecostounitario', newcostounitario)
+        await axios.post('/api/constantes/savecostounitario', newcostounitario)
         .then(res=>{
             console.log("Costo actualizado exitosamente");
             alert(res.data)
