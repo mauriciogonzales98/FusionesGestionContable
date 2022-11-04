@@ -13,9 +13,10 @@ function CostoFijo(){
     const[categoria, setCategoria]=useState('');
     const[cantidad, setCantidad]=useState('');
 
-    const[cf, setCF]=useState('');
-    const[viandas, setViandas]=useState('');
+    // const[cf, setCF]=useState('');
+    // const[viandas, setViandas]=useState('');
     const[costounitario, setCostoUnitario]=useState('');
+    const[costos, setCostos]=useState([]);
 
     function addCostoFijo(){
 
@@ -35,12 +36,7 @@ function CostoFijo(){
 
         calcular();   
         
-        // refreshPage();
     }
-    
-    // function refreshPage(){
-    //     window.location.reload(false);
-    // }
     
     async function calcular(){
 
@@ -56,71 +52,68 @@ function CostoFijo(){
 
         console.log(total)
         updateCostofijo();
-        updateCostoUnitario();
+        
     }
 
-    function updateCostofijo(){
+    async function updateCostofijo(){
         console.log(total);
         var newcostofijo = {
             nombre: "Costo Fijo",
             precio: total,
         }
 
-        axios.post('/api/constantes/savecostofijo', newcostofijo)
+        await axios.post('/api/constantes/savecostofijo', newcostofijo)
         .then(res=>{
             alert(res.data)
         })
         .catch(err=>{console.log(err)})
+
+        calcularCostoUnitario();
     }
 
-    function updateViandas(){
+    async function updateViandas(){
         var newviandas = {
             nombre: "Viandas",
             cantidad: cantidad
         }
-        axios.post('/api/constantes/saveviandas', newviandas)
+        await axios.post('/api/constantes/saveviandas', newviandas)
         .then(res=>{
             alert("Viandas actualizadas exitosamente");
             alert(res.data)
         })
         .catch(err=>{console.log(err)})
 
-        updateCostoUnitario();
-        refreshPage();
+        calcularCostoUnitario();
     }
 
     function refreshPage(){
         window.location.reload(false);
     }
 
-    async function updateCostoUnitario(){
-        await axios.get('/api/constantes/getcostofijo')
-        .then(res=>{     
-            setCF(res.data[0].precio);
+    async function calcularCostoUnitario(){
+
+        await axios.get('/api/constantes/getallconst')
+        .then(res=>{
+            console.log(res.data)
+            setCostos(res.data)
         })
         .catch(err=>{console.log(err)})
 
-        await axios.get('/api/constantes/getviandas')
-        .then(res=>{   
-            setViandas(res.data[0].cantidad);
-        })
-        .catch(err=>{console.log(err)})
-        
-        var temp = cf/viandas;
-        setCostoUnitario(temp);
-        console.log(costounitario);
+        // console.log("valor costo fijo: "+ costos[0].precio + " valor viandas: "+ costos[1].cantidad);
+        setCostoUnitario((costos[0].precio/costos[1].cantidad));
+        console.log("El valor del costo unitario es: "+ costounitario);
 
         var newcostounitario = {
             nombre: "Costo Unitario",
             precio: costounitario
         }
+        
         await axios.post('/api/constantes/savecostounitario', newcostounitario)
         .then(res=>{
-            console.log("Costo actualizado exitosamente");
+            console.alert("Costo actualizado exitosamente");
             alert(res.data)
         })
         .catch(err=>{console.log(err)})
-
 
     }
 

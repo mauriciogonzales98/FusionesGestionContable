@@ -1,12 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, Component} from 'react';
 import axios from 'axios';
 
 
 function ShowCostoFijo(){
  
-    // const[cf, setCF]=useState(0);
-    // const[viandas, setViandas]=useState(1);
-    // const[costounitario, setCostoUnitario]=useState(0);
     const[costos, setCostos]=useState([]);
 
      useEffect(() => {
