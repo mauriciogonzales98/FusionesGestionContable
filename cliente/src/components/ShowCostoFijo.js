@@ -1,37 +1,22 @@
-import React, {useState, useEffect, Component} from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 
 
-function ShowCostoFijo(){
- 
-    const[costos, setCostos]=useState([]);
-
-     useEffect(() => {
-        
-        axios.get('api/constantes/getallconst').then(res => {
-            console.log(res.data);
-            setCostos(res.data);
-        }).catch(err => {
-        console.log(err);
-        })
-
-    }, []);
-
-    var viewCostos = costos.map((costo) =>{
-        if(costo.precio){
-            return(
+function ShowCostoFijo({ costos }) {
+    var viewCostos = costos.map((costo) => {
+        if (costo.precio) {
+            return (
                 <h4>{costo.nombre}: ${costo.precio}</h4>
             )
         }
-        else{
-            return(
+        else {
+            return (
                 <h4>{costo.nombre}: {costo.cantidad}</h4>
             )
         }
-        
+
     })
 
-    return(
+    return (
         <div className="container">
             {viewCostos}
         </div>
