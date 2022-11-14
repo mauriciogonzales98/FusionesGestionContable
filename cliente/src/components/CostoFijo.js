@@ -59,7 +59,7 @@ function CostoFijo() {
         <div className="container">
 
             <div className="row">
-                <h2 className='mt-4'>Costo Fijo</h2>
+                <h2 className='text-blue-450'>Costo Fijo</h2>
             </div>
             <ShowCostoFijo costos={costos} />
 
