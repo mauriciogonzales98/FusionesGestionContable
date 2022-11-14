@@ -4,6 +4,7 @@ import EditarPlato from './components/EditarPlato';
 import AgregarPlato from './components/AgregarPlato';
 import AddIngrediente from './components/Ingredientes';
 import CostoFijo from './components/CostoFijo';
+import Platos from './components/Platos'
 
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
@@ -38,6 +39,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<ListaPlatos/>}></Route>
+        <Route path='/platos' element={<Platos/>}></Route>
         <Route path='/agregarplato' element={<AgregarPlato/>}></Route>
         <Route path='/editarplato' element={<EditarPlato/>}></Route>
         <Route path='/ingredientes' element={<AddIngrediente/>}></Route>
