@@ -46,7 +46,7 @@ function AddIngrediente(){
     }
 
     return(
-        <div className="container">
+        <div className="">
 
             <ListaIngredientes/>
             <div className="row">

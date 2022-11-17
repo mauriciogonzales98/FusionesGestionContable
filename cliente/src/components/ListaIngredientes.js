@@ -29,13 +29,13 @@ function ListaIngredientes(){
     return(
         <div>
             <h2>Lista De Ingredientes</h2>
-            <table className='table table-dark mt-4'>
+            <table className=''>
                     <thead>
                         <tr>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Peso</th>
-                        <th scope="col">Precio</th>
-                        <th scope="col">Precio unitario</th>
+                        <th >Nombre</th>
+                        <th >Peso</th>
+                        <th >Precio</th>
+                        <th >Precio unitario</th>
                         </tr>
                     </thead>
                     <tbody> 

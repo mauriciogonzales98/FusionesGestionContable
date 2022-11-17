@@ -56,31 +56,33 @@ function CostoFijo() {
 
 
     return (
-        <div className="container">
+        <div className="md:container md:mx-auto">
 
-            <div className="row">
-                <h2 className='text-blue-450'>Costo Fijo</h2>
+            <div className="">
+                <h2 className="text-3xl">Costo Fijo</h2>
             </div>
-            <ShowCostoFijo costos={costos} />
+            {/* <ShowCostoFijo costos={costos} /> */}
 
-            <div className='row'>
-                <div className="col-sm-3 offset-3">
-                    <label htmlFor="viandas" className="form">Viandas</label>
-                    <input value={cantidadViandas} type="number" className='form-control' onChange={(e) => { setCantidadViandas(e.target.value) }}></input>
+            <div className=''>
+                <div className="">
+                    <label htmlFor="viandas" className="">Viandas</label>
+                    <input value={cantidadViandas} type="number" className='' onChange={(e) => { setCantidadViandas(e.target.value) }}></input>
                 </div>
-                <button onClick={updateViandas} disabled={!(cantidadViandas > 0)} className='btn btn-success col-sm-1'>Actualizar</button>
+                <button onClick={updateViandas} disabled={!(cantidadViandas > 0)} className=''>Actualizar</button>
             </div>
-            <div className="row">
-                <div className="col-sm-6 offset-3">
-                    <label htmlFor="nombre" className="form">Nombre</label>
-                    <input type="text" className='form-control' value={nombre} onChange={(e) => { setNombre(e.target.value) }}></input>
+            <div className="columns-2">
+                <ShowCostoFijo costos={costos} />
+                <div>
+                <div className="">
+                    <label htmlFor="nombre" className="">Nombre</label>
+                    <input type="text" className='' value={nombre} onChange={(e) => { setNombre(e.target.value) }}></input>
                 </div>
-                <div className="col-sm-6 offset-3">
-                    <label htmlFor="precio" className="form">Precio</label>
-                    <input type="text" className='form-control' value={precio} onChange={(e) => { setPrecio(e.target.value) }}></input>
+                <div className="">
+                    <label htmlFor="precio" className="">Precio</label>
+                    <input type="text" className='' value={precio} onChange={(e) => { setPrecio(e.target.value) }}></input>
                 </div>
-                <div className="col-sm-6 offset-3">
-                    <label htmlFor="categoria" className="form" value={categoria} onChange={(e) => { setCategoria(e.target.value) }}>Categoria
+                <div className="">
+                    <label htmlFor="categoria" className="" value={categoria} onChange={(e) => { setCategoria(e.target.value) }}>Categoria
                         <select>
                             <option value=''></option>
                             <option value='Servicio'>Servicio</option>
@@ -91,9 +93,10 @@ function CostoFijo() {
                         </select>
                     </label>
                 </div>
+                </div>
 
-                <div className='row justify-content-md-center'>
-                    <button onClick={addCostoFijo} disabled={!nombre || !precio || !categoria} className='btn btn-success col-sm-1'>Agregar</button>
+                <div className=''>
+                    <button onClick={addCostoFijo} disabled={!nombre || !precio || !categoria} className=''>Agregar</button>
                 </div>
             </div>
         </div>
