@@ -10,14 +10,16 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App md:container">
+    <div className="App">
       <nav className="p-2 text-xl bg-black">
-        <div className="flex row space-x-1">
-            <a className="flex p-3 text-white hover:text-orange-500" href="/">Fusiones Gestion Comercial</a>
-            <button className="border-solid" type="button"></button>
-            <span className=''></span>
+        <div className="flex-row space-x-1">
+            {/* <a className="flex row p-3 text-white hover:text-orange-500" href="/">Fusiones Gestion Comercial</a>
+            <span className=''></span> */}
             <div className="relative flex-wrap"> 
-              <ul className="flex flex-col lg:flex-row list-none lg:mr-auto space-x-4 justify-center">
+              <ul className="flex flex-col lg:flex-row list-none lg:mr-auto space-x-4 ">
+                <li className="nav-item p-3  text-white hover:text-orange-500">
+                  <a className="" href="/">Fusiones</a>
+                </li>
                 <li className="nav-item p-3  text-white hover:text-orange-500">
                   <a className="" href="/agregarplato">Agregar Plato</a>
                 </li>
@@ -27,14 +29,13 @@ function App() {
                 <li className="nav-item p-3  text-white hover:text-orange-500">
                   <a className="" href="/platos">Platos</a>
                 </li>
-                <li className="nav-item p-3  text-white hover:text-orange-500">
+                <li className="nav-item p-3  text-white hover:text-orange-500 ">
                   <a className="" href="/costofijo">Costo Fijo</a>
                 </li>
               </ul>
             </div>
           </div>
 </nav>
-    <button className="btn bg-purple-700 border-solid hover:border-dotted rounded-md">weon</button>
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<ListaPlatos/>}></Route>
