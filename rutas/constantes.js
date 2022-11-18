@@ -42,7 +42,7 @@ router.post('/saveviandas', async (req, res) => {
         const costoFijo = await ModeloConst.findOne({ nombre: "Costo Fijo" }).exec()
 
         const newCostoUnitario = await ModeloConst.findOneAndUpdate({ nombre: "Costo Unitario" }, {
-            precio: costoFijo.precio / newViandas.cantidad
+            precio: Math.ceil(costoFijo.precio / newViandas.cantidad)
         }, { new: true }).exec()
 
         res.status(200).send([costoFijo, newViandas, newCostoUnitario])
