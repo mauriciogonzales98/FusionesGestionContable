@@ -30,18 +30,18 @@ function ListaIngredientes(){
         <div>
             <h2>Lista De Ingredientes</h2>
             <table className=''>
-                    <thead>
-                        <tr>
+                <thead>
+                    <tr>
                         <th >Nombre</th>
                         <th >Peso</th>
                         <th >Precio</th>
                         <th >Precio unitario</th>
-                        </tr>
-                    </thead>
-                    <tbody> 
-                        {tableRows}
-                    </tbody>
-                </table>
+                    </tr>
+                </thead>
+                <tbody> 
+                    {tableRows}
+                </tbody>
+            </table>
         </div>
     )
 }

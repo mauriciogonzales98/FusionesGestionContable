@@ -10,13 +10,13 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App bg-black flex flex-col h-screen">
       <nav className="p-2 text-xl bg-black">
         <div className="flex-row space-x-1">
             {/* <a className="flex row p-3 text-white hover:text-orange-500" href="/">Fusiones Gestion Comercial</a>
             <span className=''></span> */}
-            <div className="relative flex-wrap"> 
-              <ul className="flex flex-col lg:flex-row list-none lg:mr-auto space-x-4 ">
+            <div className=""> 
+              <ul className="flex flex-col lg:flex-row list-none lg:mr-auto space-x-4 justify-center">
                 <li className="nav-item p-3  text-white hover:text-orange-500">
                   <a className="" href="/">Fusiones</a>
                 </li>
