@@ -136,4 +136,4 @@ function CostoFijo() {
     )
 }
 
-export default CostoFijo;
+export default CostoFijo; 

@@ -21,7 +21,7 @@ app.use('/api/costofijo', rutascostofijo);
 app.use('/api/constantes', rutasconstantes.router);
 
 app.get('/', (req, res) => {
-    res.end('Welcome to nodebackend');
+    res.send('Welcome to nodebackend');
 });
 
 //Config server
