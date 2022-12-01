@@ -47,12 +47,18 @@ function CostoFijo() {
         try {
             const newCostos = await axios.post('/api/costosfijos/addcostofijo', costofijo)
             setCostos(newCostos?.data ?? [])
-            console.log(costos)
+            resetVars();
         }
         catch (error) {
             console.log('Error addcostofijo:', error)
         }
 
+    }
+
+    function resetVars(){
+        setNombre('');
+        setPrecio('');
+        setCategoria('');
     }
 
 
@@ -90,9 +96,9 @@ function CostoFijo() {
                         <label 
                             htmlFor="categoria" 
                             className="text-white" 
-                            value={categoria} onChange={(e) => { setCategoria(e.target.value) }}>Categoria
+                            value={categoria}>Categoria
                         </label>
-                            <select className='border-2 border-solid rounded-md border-gray-600'>
+                            <select onChange={(e) => { setCategoria(e.target.value) }} className='border-2 border-solid rounded-md border-gray-600'>
                                 <option value=''></option>
                                 <option value='Servicio'>Servicio</option>
                                 <option value='impuesto'>Impuesto</option>
