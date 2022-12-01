@@ -9,7 +9,7 @@ const eschemacostofijo = new mongoose.Schema({
     categoria: String,
     id: String
 })
-const ModeloCostofijo = mongoose.model('costofijo', eschemacostofijo);
+const ModeloCostofijo = mongoose.model('costosfijos', eschemacostofijo);
 
 const { ModeloConst } = require('./constantes')
 
@@ -26,11 +26,12 @@ router.post('/addcostofijo', async (req, res) => {
     })
 
     try {
-        await nuevocostofijo.save()
+        await nuevocostofijo.save();
 
         const CostosFijos = (await ModeloCostofijo.find({}).exec()).reduce(
             (result, costoFijo) => result + costoFijo.precio,
             0)
+        console.log("el total de costofijo es: ", CostosFijos);
 
         const newCostoFijo = await ModeloConst.findOneAndUpdate({ nombre: "Costo Fijo" }, {
             precio: CostosFijos

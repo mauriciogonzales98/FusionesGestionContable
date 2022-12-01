@@ -45,8 +45,9 @@ function CostoFijo() {
         }
 
         try {
-            const newCostos = await axios.post('/api/costofijo/addcostofijo', costofijo)
+            const newCostos = await axios.post('/api/costosfijos/addcostofijo', costofijo)
             setCostos(newCostos?.data ?? [])
+            console.log(costos)
         }
         catch (error) {
             console.log('Error addcostofijo:', error)
@@ -61,13 +62,11 @@ function CostoFijo() {
             <div className="flex justify-center space-y-3">
                 <h1 className="text-6xl text-white">Costo Fijo</h1>
             </div>
-            {/* <ShowCostoFijo costos={costos} /> */}
-
             <div className=''>
                 <div className="text-2xl space-x-2">
                     <label htmlFor="viandas" className="text-white">Viandas</label>
                     <input value={cantidadViandas} type="number" className='border-2 border-solid rounded-md border-gray-600' onChange={(e) => { setCantidadViandas(e.target.value) }}></input>
-                    <button className="h-10 w-32 border border-solid rounded-md border-orange-400 bg-orange-400 hover:border-orange-500 hover:bg-orange-500" onClick={updateViandas} disabled={!(cantidadViandas > 0)}>Actualizar</button>
+                    <button className="h-10 w-32 border border-solid rounded-md border-orange-400 bg-orange-400 hover:border-orange-500 hover:bg-orange-500 disabled:opacity-50" onClick={updateViandas} disabled={!(cantidadViandas > 0)}>Actualizar</button>
                 </div>
             </div>
             <div className="flex columns-2 justify-center space-x-2">
@@ -103,10 +102,7 @@ function CostoFijo() {
                             </select>
                     </div>
                     <div className='text-xl'>
-                        <button 
-                            onClick={addCostoFijo} 
-                            disabled={!nombre || !precio || !categoria} 
-                            className='h-10 w-24 justify-centerborder border-solid rounded-md border-orange-400 bg-orange-400 hover:border-orange-500 hover:bg-orange-500'>Agregar</button>
+                        <button onClick={addCostoFijo} disabled={!nombre || !precio || !categoria} className='h-10 w-24 justify-centerborder border-solid rounded-md border-orange-400 bg-orange-400 hover:border-orange-500 hover:bg-orange-500 disabled:opacity-50'>Agregar</button>
                     </div>
                 </div>
             </div>

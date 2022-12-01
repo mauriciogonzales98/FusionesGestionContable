@@ -11,17 +11,6 @@ const ModeloConst = mongoose.model('constantes', eschemaconst);
 
 module.exports = { router, ModeloConst };
 
-// router.post('/savecostofijo', (req, res) => {
-
-//     ModeloConst.findOneAndUpdate({ nombre: "Costo Fijo" }, {
-//         nombre: req.body.nombre,
-//         precio: req.body.precio
-//     })
-//         .catch(err => {
-//             console.log(err.message)
-//         })
-// })
-
 router.get('/getcostofijo', (req, res) => {
     ModeloConst.find({ nombre: "Costo Fijo" }, function (docs, err) {
         if (!err) {
@@ -39,7 +28,7 @@ router.post('/saveviandas', async (req, res) => {
             cantidad: req.body.cantidad
         }, { new: true }).exec()
 
-        const costoFijo = await ModeloConst.findOne({ nombre: "Costo Fijo" }).exec()
+        const costoFijo = await ModeloConst.findOne({ nombre: "Costo Fijo" }).exec();
 
         const newCostoUnitario = await ModeloConst.findOneAndUpdate({ nombre: "Costo Unitario" }, {
             precio: Math.ceil(costoFijo.precio / newViandas.cantidad)
@@ -63,17 +52,6 @@ router.get('/getviandas', (req, res) => {
         }
     })
 })
-
-// router.post('/savecostounitario', (req, res) => {
-
-//     ModeloConst.findOneAndUpdate({ nombre: "Costo Unitario" }, {
-//         nombre: req.body.nombre,
-//         precio: req.body.precio
-//     })
-//         .catch(err => {
-//             console.log(err)
-//         })
-// })
 
 router.get('/getcostounitario', (req, res) => {
     ModeloConst.find({ nombre: "Costo Unitario" }, function (docs, err) {
