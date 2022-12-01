@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import uniqid from 'uniqid';
 import ShowCostoFijo from './ShowCostoFijo';
+import ListaCostosFijos from './ListaCostosfijos';
 
 function CostoFijo() {
     const [costos, setCostos] = useState([]);
@@ -116,25 +117,7 @@ function CostoFijo() {
                 <div>
                     <h1 className='text-5xl text-white'>Lista costos fijos</h1>
                 </div>
-                {/* Placeholder table*/}
-                <div className='flex col-1 justify-center'>
-                    <table className='text-white grid'>
-                    <thead>
-                        <tr className='grid grid-cols-3  text-xl text-center space-x-8'>
-                            <th >Nombre</th>
-                            <th >Precio</th>
-                            <th >Categoria</th> 
-                        </tr>
-                    </thead>
-                    <tbody > 
-                        <tr className='grid grid-cols-3 text-lg space-x-8'>
-                            <td>Mauri</td>
-                            <td>40000</td>
-                            <td>Sueldo</td>
-                        </tr>
-                    </tbody>
-                    </table>
-                </div>
+                 <ListaCostosFijos />
             </div>
         </div>
     )

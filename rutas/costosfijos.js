@@ -51,6 +51,17 @@ router.post('/addcostofijo', async (req, res) => {
 })
 
 //Obtener todos los platos
+router.get('/getallcostosfijos', async(req, res)=>{
+    try{
+        const costosFijos = await ModeloCostofijo.find({}).exec();
+        res.send(costosFijos)
+    }
+    catch(errGetallcostos){
+        res.send(errGetallcostos)
+    }
+})
+
+
 router.get('/getcostofijo', (req, res) => {
     ModeloCostofijo.find({}, function (docs, err) {
         if (!err) {
