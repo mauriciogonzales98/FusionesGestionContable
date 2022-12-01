@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import ModifyDeleteButtons from "./ModifyDeleteButtons";
 
 function ListaCostosFijos() {
 
@@ -21,10 +22,12 @@ function ListaCostosFijos() {
 
     const itemsRow = costosFijos.map((item, index) => {
         return (
-            <tr className='grid grid-cols-3 text-lg space-x-8' key={index}>
+            <tr className='grid grid-cols-4 text-lg space-x-8' key={index}>
                 <td>{item.nombre}</td>
                 <td>{item.precio}</td>
                 <td>{item.categoria}</td>
+                <ModifyDeleteButtons />
+                {/* <td><button>test</button></td> */}
             </tr>
         )
     })
@@ -33,10 +36,11 @@ function ListaCostosFijos() {
         <div className='flex col-1 justify-center'>
             <table className='text-white grid'>
                 <thead>
-                    <tr className='grid grid-cols-3  text-xl text-center space-x-8'>
+                    <tr className='grid grid-cols-4  text-xl text-center space-x-8'>
                         <th >Nombre</th>
                         <th >Precio</th>
                         <th >Categoria</th>
+                        <th> </th>
                     </tr>
                 </thead>
                 <tbody>
