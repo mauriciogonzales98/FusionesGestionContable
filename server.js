@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({extended:'true'}))
 
 app.use('/api/platos', rutasplatos);
 app.use('/api/ingredientes', rutasingredientes);
-app.use('/api/costofijo', rutascostofijo);
+app.use('/api/costosfijos', rutascostofijo);
 app.use('/api/constantes', rutasconstantes.router);
 
 app.get('/', (req, res) => {
