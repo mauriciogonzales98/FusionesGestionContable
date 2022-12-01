@@ -124,10 +124,12 @@ function CostoFijo() {
                             <th >Categoria</th> 
                         </tr>
                     </thead>
-                    <tbody className='grid grid-cols-3 text-lg space-x-8'> 
-                        <td>Mauri</td>
-                        <td>40000</td>
-                        <td>Sueldo</td>
+                    <tbody > 
+                        <tr className='grid grid-cols-3 text-lg space-x-8'>
+                            <td>Mauri</td>
+                            <td>40000</td>
+                            <td>Sueldo</td>
+                        </tr>
                     </tbody>
                     </table>
                 </div>

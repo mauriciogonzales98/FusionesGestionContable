@@ -2,10 +2,10 @@ import React from 'react';
 
 
 function ShowCostoFijo({ costos }) {
-    var viewCostos = costos.map((costo) => {
+    var viewCostos = costos.map((costo, index) => {
         if (costo.precio) {
             return (
-                <div className='grid grid-cols-2'>
+                <div className='grid grid-cols-2' key={index}>
                     <h4 className="flex text-2xl text-white">{costo.nombre}</h4> 
                     <h4 className="text-2xl text-white">${costo.precio}</h4>
                 </div>
@@ -14,7 +14,7 @@ function ShowCostoFijo({ costos }) {
         }
         else {
             return (
-                <div className='grid grid-cols-2'>
+                <div className='grid grid-cols-2' key={index}>
                     <h4 className="flex text-2xl text-white">{costo.nombre}</h4> 
                     <h4 className="text-2xl text-white">{costo.cantidad}</h4>
                 </div>
