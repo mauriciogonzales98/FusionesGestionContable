@@ -26,7 +26,8 @@ function ListaCostosFijos() {
                 <td>{item.nombre}</td>
                 <td>{item.precio}</td>
                 <td>{item.categoria}</td>
-                <ModifyDeleteButtons />
+                {/* <td>{item.id}</td> */}
+                <ModifyDeleteButtons id={item.id}/>
                 {/* <td><button>test</button></td> */}
             </tr>
         )

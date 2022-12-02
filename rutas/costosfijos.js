@@ -62,13 +62,12 @@ router.get('/getallcostosfijos', async(req, res)=>{
 })
 
 
-router.get('/getcostofijo', (req, res) => {
-    ModeloCostofijo.find({}, function (docs, err) {
-        if (!err) {
-            res.send(docs);
-        }
-        else {
-            res.send(err);
-        }
-    })
+router.get('/deletecostofijo', (req, res) => {
+
+    try{
+        ModeloCostofijo.find({ id: req.body.id }, function (docs, err) {}).exec();
+    }
+    catch(errDeleteCostofijo){
+        console.log(errDeleteCostofijo)
+    }
 })
