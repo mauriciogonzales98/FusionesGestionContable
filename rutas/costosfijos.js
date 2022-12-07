@@ -62,12 +62,14 @@ router.get('/getallcostosfijos', async(req, res)=>{
 })
 
 
-router.get('/deletecostofijo', (req, res) => {
-
+router.post('/deletecostofijo', async (req, res) => {
     try{
-        ModeloCostofijo.find({ id: req.body.id }, function (docs, err) {}).exec();
+        await ModeloCostofijo.findOneAndDelete({id: req.body.id});
+        res.status(200).send();
+        console.log("Deleted correctly", req.body.id);
     }
     catch(errDeleteCostofijo){
-        console.log(errDeleteCostofijo)
-    }
+        res.send(errDeleteCostofijo);
+        console.log("No se encuentra el id",errDeleteCostofijo);
+    } 
 })
